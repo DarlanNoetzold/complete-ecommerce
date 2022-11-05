@@ -1,18 +1,5 @@
 # ecommerce
  Ecommerce backend apis
- 
-Backend
-https://github.com/webtutsplus/ecommerce-backend
-
-https://limitless-lake-55070.herokuapp.com/swagger-ui.html 
-
-Frontend
-
-https://github.com/webtutsplus/ecommerce-vuejs 
-
-https://infallible-swartz-b50174.netlify.app/
-
-
 
 * This is a Maven Project. Ensure, Maven is installed on your system.
 * It is Recommended that you use Linux Based OS.
