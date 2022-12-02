@@ -16,6 +16,11 @@ A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Fr
 * Foi desenvolvida uma lista de desejos;
 * É possível adicionar produtos ao carrinho.
 
+## Setup:
+* Para iniciar o Back-End basta seguir o tutorial:
+Link: https://github.com/DarlanNoetzold/complete-ecommerce/blob/main/ecommerce-backend/README.md
+* Para iniciar o Back-End basta seguir o tutorial:
+Link: https://github.com/DarlanNoetzold/complete-ecommerce/blob/main/ecommerce-vuejs/README.md
 
 ---
 ## Imagens do E-commerce:
@@ -35,8 +40,7 @@ A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Fr
 <br>![image](https://user-images.githubusercontent.com/41628589/205278295-7a5f1fd4-cca9-465a-a2d7-aaf64b9e38f5.png)
 
 * Adicionar novos produtos e novas categorias:
-<br>![image](https://user-images.githubusercontent.com/41628589/205278597-61dfc7b6-0a88-444a-862a-c543aac122b9.png)
-
+<br>![image](https://user-images.githubusercontent.com/41628589/205279578-68e904ed-a8d1-48dd-9b8b-9b0a52cb6466.png)
 
 ---
 ⭐️ From [DarlanNoetzold](https://github.com/DarlanNoetzold)
