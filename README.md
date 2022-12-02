@@ -6,7 +6,7 @@ A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Fr
 * A aplicação tem login e segurança bem estruturada;
 * Para salvar os dados foi usado uma API como BackEnd, que salva em um banco PostgreSQL;
 * Para pagamento foi usado Stripe Token;
-* Com SpringSecurity foram feitas autenticações e autoriações;
+* Com SpringSecurity foram feitas autenticações e autoriações.
 
 
 ## Projeto:
