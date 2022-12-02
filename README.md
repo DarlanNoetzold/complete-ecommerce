@@ -12,7 +12,7 @@ A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Fr
 
 
 ## Projeto:
-* Extem usuários de clientes e de administradores;
+* Exitem usuários de clientes e de administradores;
 * É possível simular pagamento com ID card fake;
 * É possível adicionar novos produtos e categorias;
 * Foi desenvolvida uma lista de desejos;
