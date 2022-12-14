@@ -8,7 +8,8 @@ A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Fr
 * Para pagamento foi usado Stripe Token;
 * Com SpringSecurity foram feitas autenticações e autoriações;
 * Todos os endpoint foram mapeados e documentados pelo Swagger;
-* Os endpoint criados no BackEnd são consumidos e alimentados pelo FrontEnd através do Vue.js.
+* Os endpoint criados no BackEnd são consumidos e alimentados pelo FrontEnd através do Vue.js;
+* Uso de RabbitMq no back-end para gerenciamento de filas para atualização de produtos.
 
 
 ## Projeto:
@@ -16,7 +17,8 @@ A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Fr
 * É possível simular pagamento com ID card fake;
 * É possível adicionar novos produtos e categorias;
 * Foi desenvolvida uma lista de desejos;
-* É possível adicionar produtos ao carrinho.
+* É possível adicionar produtos ao carrinho;
+* Os produtos são adicionados no back-end de maneira assíncrona usando serviço de mensageiria;
 
 ## Setup:
 * Para iniciar o Back-End basta seguir o tutorial:
