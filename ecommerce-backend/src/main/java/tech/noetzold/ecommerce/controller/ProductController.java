@@ -1,6 +1,7 @@
 package tech.noetzold.ecommerce.controller;
 
 import tech.noetzold.ecommerce.common.ApiResponse;
+import tech.noetzold.ecommerce.config.message.RabbitmqConstantes;
 import tech.noetzold.ecommerce.dto.product.ProductDto;
 import tech.noetzold.ecommerce.model.Category;
 import tech.noetzold.ecommerce.service.CategoryService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tech.noetzold.ecommerce.service.RabbitmqService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -20,6 +22,8 @@ public class ProductController {
     @Autowired ProductService productService;
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    private RabbitmqService rabbitmqService;
 
     @GetMapping("/")
     public ResponseEntity<List<ProductDto>> getProducts() {
@@ -29,12 +33,7 @@ public class ProductController {
 
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addProduct(@RequestBody ProductDto productDto) {
-        Optional<Category> optionalCategory = categoryService.readCategory(productDto.getCategoryId());
-        if (!optionalCategory.isPresent()) {
-            return new ResponseEntity<ApiResponse>(new ApiResponse(false, "category is invalid"), HttpStatus.CONFLICT);
-        }
-        Category category = optionalCategory.get();
-        productService.addProduct(productDto, category);
+        this.rabbitmqService.enviaMensagem(RabbitmqConstantes.FILA_PRODUCT, productDto);
         return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Product has been added"), HttpStatus.CREATED);
     }
 
