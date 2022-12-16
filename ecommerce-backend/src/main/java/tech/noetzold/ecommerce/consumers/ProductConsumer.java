@@ -26,16 +26,13 @@ public class ProductConsumer {
     CategoryService categoryService;
 
     @RabbitListener(queues = RabbitmqConstantes.FILA_PRODUCT)
-    private ResponseEntity<ApiResponse> consumidor(String mensagem) throws JsonProcessingException, InterruptedException {
+    private void consumidor(String mensagem) throws JsonProcessingException, InterruptedException {
         ProductDto productDto = new ObjectMapper().readValue(mensagem, ProductDto.class);
-
         Optional<Category> optionalCategory = categoryService.readCategory(productDto.getCategoryId());
         if (!optionalCategory.isPresent()) {
-            return new ResponseEntity<ApiResponse>(new ApiResponse(false, "category is invalid"), HttpStatus.CONFLICT);
+            return;
         }
         Category category = optionalCategory.get();
         productService.addProduct(productDto, category);
-        return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Product has been added"), HttpStatus.CREATED);
-
     }
 }
