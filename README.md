@@ -9,7 +9,8 @@ A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Fr
 * Com SpringSecurity foram feitas autenticações e autoriações;
 * Todos os endpoint foram mapeados e documentados pelo Swagger;
 * Os endpoint criados no BackEnd são consumidos e alimentados pelo FrontEnd através do Vue.js;
-* Uso de RabbitMq no back-end para gerenciamento de filas para atualização de produtos.
+* Uso de RabbitMq no back-end para gerenciamento de filas para atualização de produtos;
+* Uso do banco não relacional Redis para a implementação do cache.
 
 
 ## Projeto:
@@ -19,6 +20,7 @@ A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Fr
 * Foi desenvolvida uma lista de desejos;
 * É possível adicionar produtos ao carrinho;
 * Os produtos são adicionados no back-end de maneira assíncrona usando serviço de mensageiria;
+* A aplicação utiliza cache para melhorar a performance.
 
 ## Setup:
 * Para iniciar o Back-End basta seguir o tutorial:
