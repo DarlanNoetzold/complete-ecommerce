@@ -3,8 +3,9 @@ package tech.noetzold.ecommerce.dto.product;
 import tech.noetzold.ecommerce.model.Product;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-public class ProductDto {
+public class ProductDto implements Serializable {
 
     private Integer id;
     private @NotNull String name;

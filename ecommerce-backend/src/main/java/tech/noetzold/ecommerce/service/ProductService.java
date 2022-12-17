@@ -1,5 +1,6 @@
 package tech.noetzold.ecommerce.service;
 
+import org.springframework.cache.annotation.Cacheable;
 import tech.noetzold.ecommerce.dto.product.ProductDto;
 import tech.noetzold.ecommerce.exceptions.ProductNotExistException;
 import tech.noetzold.ecommerce.model.Category;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Cacheable("product")
 public class ProductService {
     @Autowired
     private ProductRepository productRepository;

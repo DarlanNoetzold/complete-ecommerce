@@ -1,5 +1,6 @@
 package tech.noetzold.ecommerce.controller;
 
+import org.springframework.cache.annotation.Cacheable;
 import tech.noetzold.ecommerce.common.ApiResponse;
 import tech.noetzold.ecommerce.config.message.RabbitmqConstantes;
 import tech.noetzold.ecommerce.dto.product.ProductDto;
