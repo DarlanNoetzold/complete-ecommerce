@@ -16,8 +16,10 @@ public class RedisConfig {
     RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
         return (builder) -> {
             Map<String, RedisCacheConfiguration> configurationMap = new HashMap<>();
-            configurationMap.put("product", RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofSeconds(20)));
-            configurationMap.put("cache2", RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofHours(2)));
+            configurationMap.put("product", RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(20)));
+            configurationMap.put("order", RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofSeconds(10)));
+            configurationMap.put("cart", RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofSeconds(15)));
+            configurationMap.put("category", RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(20)));
             builder.withInitialCacheConfigurations(configurationMap);
         };
     }

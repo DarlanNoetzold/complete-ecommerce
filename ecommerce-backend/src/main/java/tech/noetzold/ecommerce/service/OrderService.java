@@ -4,6 +4,7 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
+import org.springframework.cache.annotation.Cacheable;
 import tech.noetzold.ecommerce.dto.cart.CartDto;
 import tech.noetzold.ecommerce.dto.cart.CartItemDto;
 import tech.noetzold.ecommerce.dto.checkout.CheckoutItemDto;
@@ -26,6 +27,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@Cacheable("order")
 public class OrderService {
 
     @Autowired

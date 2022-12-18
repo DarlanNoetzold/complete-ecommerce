@@ -1,5 +1,6 @@
 package tech.noetzold.ecommerce.service;
 
+import org.springframework.cache.annotation.Cacheable;
 import tech.noetzold.ecommerce.dto.cart.AddToCartDto;
 import tech.noetzold.ecommerce.dto.cart.CartDto;
 import tech.noetzold.ecommerce.dto.cart.CartItemDto;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@Cacheable("cart")
 public class CartService {
 
     @Autowired

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import tech.noetzold.ecommerce.model.Category;
@@ -12,6 +13,7 @@ import tech.noetzold.ecommerce.repository.Categoryrepository;
 
 @Service
 @Transactional
+@Cacheable("category")
 public class CategoryService {
 
 	private final Categoryrepository categoryrepository;
