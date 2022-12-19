@@ -2,6 +2,8 @@ package tech.noetzold.ecommerce.service;
 
 import java.util.List;
 import javax.transaction.Transactional;
+
+import org.springframework.cache.annotation.Cacheable;
 import tech.noetzold.ecommerce.model.WishList;
 import tech.noetzold.ecommerce.repository.WishListRepository;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
+@Cacheable("wishlist")
 public class WishListService {
 
     private final WishListRepository wishListRepository;
