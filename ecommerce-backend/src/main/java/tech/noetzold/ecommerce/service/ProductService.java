@@ -1,5 +1,6 @@
 package tech.noetzold.ecommerce.service;
 
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import tech.noetzold.ecommerce.dto.product.ProductDto;
 import tech.noetzold.ecommerce.exceptions.ProductNotExistException;
@@ -43,7 +44,7 @@ public class ProductService {
         Product product = getProductFromDto(productDto, category);
         productRepository.save(product);
     }
-
+    @CacheEvict(value = "product", allEntries = true)
     public void updateProduct(Integer productID, ProductDto productDto, Category category) {
         Product product = getProductFromDto(productDto, category);
         product.setId(productID);

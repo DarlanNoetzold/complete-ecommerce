@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +38,7 @@ public class CategoryService {
 	public Optional<Category> readCategory(Integer categoryId) {
 		return categoryrepository.findById(categoryId);
 	}
-
+	@CacheEvict(value = "category", allEntries = true)
 	public void updateCategory(Integer categoryID, Category newCategory) {
 		Category category = categoryrepository.findById(categoryID).get();
 		category.setCategoryName(newCategory.getCategoryName());
