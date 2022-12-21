@@ -59,7 +59,7 @@ public class OrderController {
 
     // get all orders
     @GetMapping("/")
-    public ResponseEntity<List<Order>> getAllOrders(@RequestParam("token") String token) throws AuthenticationFailException {
+        public ResponseEntity<List<Order>> getAllOrders(@RequestParam("token") String token) throws AuthenticationFailException {
         // validate token
         authenticationService.authenticate(token);
         // retrieve user
