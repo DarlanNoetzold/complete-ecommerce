@@ -3,12 +3,19 @@ package tech.noetzold.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="orders")
+@Builder
 public class Order {
 
     @Id
@@ -32,9 +39,6 @@ public class Order {
     @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-
-    public Order() {
-    }
 
 
     public List<OrderItem> getOrderItems() {
