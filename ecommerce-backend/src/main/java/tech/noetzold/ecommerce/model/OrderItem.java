@@ -1,6 +1,7 @@
 package tech.noetzold.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -8,6 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "orderitems")
+@Builder
 public class OrderItem {
 
     @Id

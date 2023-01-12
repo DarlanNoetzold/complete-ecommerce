@@ -1,6 +1,7 @@
 package tech.noetzold.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import tech.noetzold.ecommerce.dto.cart.AddToCartDto;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="cart")
+@Builder
 public class Cart {
 
     @Id

@@ -2,6 +2,8 @@ package tech.noetzold.ecommerce.model;
 
 
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
@@ -10,6 +12,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "wishlist")
+@Builder
 public class WishList {
 
 

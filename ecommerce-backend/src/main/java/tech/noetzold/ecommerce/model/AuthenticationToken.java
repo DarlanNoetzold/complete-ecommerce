@@ -1,10 +1,13 @@
 package tech.noetzold.ecommerce.model;
+import lombok.Builder;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Table(name = "tokens")
+@Builder
 public class AuthenticationToken {
 
     @Id
