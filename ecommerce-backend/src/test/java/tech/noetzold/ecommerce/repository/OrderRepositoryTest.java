@@ -12,6 +12,7 @@ import tech.noetzold.ecommerce.model.User;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 @DataJpaTest
 @DisplayName("Tests for Order Repository")
@@ -48,6 +49,20 @@ class OrderRepositoryTest {
         Assertions.assertThat(orderSaved.getId()).isNotNull();
         Assertions.assertThat(orderUpdated.getTotalPrice()).isEqualTo(orderSaved.getTotalPrice());
 
+    }
+
+    @Test
+    @DisplayName("Delete the new Order")
+    void save_DeleteOrder_WhenSuccessful(){
+        Order orderToBeSaved = createOrder();
+
+        Order orderSaved = this.orderRepository.save(orderToBeSaved);
+
+        this.orderRepository.delete(orderSaved);
+
+        Optional<Order> orderOptional = this.orderRepository.findById(orderSaved.getId());
+
+        Assertions.assertThat(orderOptional).isEmpty();
     }
 
 
