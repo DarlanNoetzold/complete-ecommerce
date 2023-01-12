@@ -6,12 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import tech.noetzold.ecommerce.model.Order;
-import tech.noetzold.ecommerce.model.OrderItem;
-import tech.noetzold.ecommerce.model.User;
+import tech.noetzold.ecommerce.model.*;
+import tech.noetzold.ecommerce.repository.util.EcommerceCreator;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 
 @DataJpaTest
@@ -25,7 +22,7 @@ class OrderRepositoryTest {
     @Test
     @DisplayName("Persist the new Order")
     void save_PersistOrder_WhenSuccessful(){
-        Order orderToBeSaved = createOrder();
+        Order orderToBeSaved = EcommerceCreator.createOrder();
 
         Order orderSaved = this.orderRepository.save(orderToBeSaved);
 
@@ -38,7 +35,7 @@ class OrderRepositoryTest {
     @Test
     @DisplayName("Update the new Order")
     void save_UpdateOrder_WhenSuccessful(){
-        Order orderToBeSaved = createOrder();
+        Order orderToBeSaved = EcommerceCreator.createOrder();
 
         Order orderSaved = this.orderRepository.save(orderToBeSaved);
 
@@ -54,7 +51,7 @@ class OrderRepositoryTest {
     @Test
     @DisplayName("Delete the new Order")
     void save_DeleteOrder_WhenSuccessful(){
-        Order orderToBeSaved = createOrder();
+        Order orderToBeSaved = EcommerceCreator.createOrder();
 
         Order orderSaved = this.orderRepository.save(orderToBeSaved);
 
@@ -65,8 +62,27 @@ class OrderRepositoryTest {
         Assertions.assertThat(orderOptional).isEmpty();
     }
 
+    @Test
+    @DisplayName("Find By Id returns a order when Successful")
+    void findByName_ReturnsListOfAnime_WhenSuccessful(){
+        Order orderToBeSaved = EcommerceCreator.createOrder();
 
-    private Order createOrder(){
-        return Order.builder().orderItems(new ArrayList< OrderItem >()).user(new User()).createdDate(new Date()).id(1).sessionId("1").totalPrice(10.5).build();
+        Order orderSaved = this.orderRepository.save(orderToBeSaved);
+
+        Optional<Order> orderOptional = this.orderRepository.findById(orderSaved.getId());
+
+        Assertions.assertThat(orderOptional)
+                .isNotEmpty()
+                .contains(orderSaved);
+
     }
+
+    @Test
+    @DisplayName("Find By id and return empty")
+    void findByName_ReturnsEmptyList_WhenAnimeIsNotFound(){
+        Optional<Order> order = this.orderRepository.findById(5);
+
+        Assertions.assertThat(order).isEmpty();
+    }
+
 }
