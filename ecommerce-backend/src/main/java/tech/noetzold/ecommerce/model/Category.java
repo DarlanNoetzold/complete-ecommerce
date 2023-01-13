@@ -1,12 +1,15 @@
 package tech.noetzold.ecommerce.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @Entity
+@AllArgsConstructor
 @Table(name = "categories")
 @Builder
 public class Category {

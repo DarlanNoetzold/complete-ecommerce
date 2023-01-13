@@ -36,7 +36,7 @@ public class EcommerceCreator {
     }
 
     public static Product createProduct(){
-        return Product.builder().price(10).carts(createCarts()).name("Product test").description("test").category(createCategory()).imageURL("www.google.com").build();
+         return Product.builder().price(10).carts(createCarts()).name("Product test").description("test").category(createCategory()).imageURL("www.google.com").build();
     }
 
     public static Category createCategory(){
@@ -45,8 +45,8 @@ public class EcommerceCreator {
 
     public static List<Cart> createCarts(){
         List<Cart> carts = new ArrayList<>();
-        carts.add(Cart.builder().createdDate(new Date()).product(createProduct()).user(createUser()).quantity(10).build());
-        carts.add(Cart.builder().createdDate(new Date()).product(createProduct()).user(createUser()).quantity(10).build());
+        carts.add(Cart.builder().createdDate(new Date()).user(createUser()).quantity(10).build());
+        carts.add(Cart.builder().createdDate(new Date()).user(createUser()).quantity(10).build());
         return carts;
     }
 }

@@ -2,13 +2,16 @@ package tech.noetzold.ecommerce.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import tech.noetzold.ecommerce.enums.Role;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@AllArgsConstructor
 @Table(name = "users")
 @Builder
 public class User {

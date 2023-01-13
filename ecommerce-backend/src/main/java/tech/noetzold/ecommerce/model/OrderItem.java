@@ -1,13 +1,16 @@
 package tech.noetzold.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@AllArgsConstructor
 @Table(name = "orderitems")
 @Builder
 public class OrderItem {

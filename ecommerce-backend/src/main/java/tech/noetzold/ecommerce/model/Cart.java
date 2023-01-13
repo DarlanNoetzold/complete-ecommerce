@@ -1,7 +1,9 @@
 package tech.noetzold.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import tech.noetzold.ecommerce.dto.cart.AddToCartDto;
 
 import javax.persistence.*;
@@ -9,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
+@AllArgsConstructor
 @Table(name="cart")
 @Builder
 public class Cart {

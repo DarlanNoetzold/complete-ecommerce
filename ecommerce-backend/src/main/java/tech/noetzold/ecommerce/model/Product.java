@@ -1,7 +1,9 @@
 package tech.noetzold.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import tech.noetzold.ecommerce.dto.product.ProductDto;
 
 import javax.persistence.*;
@@ -9,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
+@AllArgsConstructor
 @Table(name = "products")
 @Builder
 public class Product {
@@ -35,9 +38,6 @@ public class Product {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     private List<Cart> carts;
-
-
-
 
 
     public Product(ProductDto productDto, Category category) {
