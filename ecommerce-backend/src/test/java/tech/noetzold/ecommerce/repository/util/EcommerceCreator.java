@@ -1,5 +1,7 @@
 package tech.noetzold.ecommerce.repository.util;
 
+import tech.noetzold.ecommerce.dto.user.SignInDto;
+import tech.noetzold.ecommerce.dto.user.SignupDto;
 import tech.noetzold.ecommerce.enums.Role;
 import tech.noetzold.ecommerce.model.*;
 
@@ -48,5 +50,13 @@ public class EcommerceCreator {
         carts.add(Cart.builder().createdDate(new Date()).user(createUser()).quantity(10).build());
         carts.add(Cart.builder().createdDate(new Date()).user(createUser()).quantity(10).build());
         return carts;
+    }
+
+    public static SignupDto createSingUp(){
+        return SignupDto.builder().email("teste@mail.com").firstName("teste").lastName("asdasd").password("123456").build();
+    }
+
+    public static SignInDto createSingIn(String email, String pass){
+        return SignInDto.builder().email(email).password(pass).build();
     }
 }

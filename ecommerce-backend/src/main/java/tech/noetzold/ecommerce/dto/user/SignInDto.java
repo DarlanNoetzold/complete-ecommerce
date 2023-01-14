@@ -1,5 +1,10 @@
 package tech.noetzold.ecommerce.dto.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+
+@Builder
+@AllArgsConstructor
 public class SignInDto {
     private String email;
     private String password;

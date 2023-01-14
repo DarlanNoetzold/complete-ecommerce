@@ -1,5 +1,12 @@
 package tech.noetzold.ecommerce.dto.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SignupDto {
     private String firstName;
     private String lastName;
