@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import tech.noetzold.ecommerce.model.*;
-import tech.noetzold.ecommerce.repository.util.EcommerceCreator;
+import tech.noetzold.ecommerce.util.EcommerceCreator;
 
 import java.util.Optional;
 
