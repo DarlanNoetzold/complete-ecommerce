@@ -1,6 +1,7 @@
 package tech.noetzold.ecommerce.service;
 
 
+import org.springframework.web.bind.annotation.RequestParam;
 import tech.noetzold.ecommerce.config.MessageStrings;
 import tech.noetzold.ecommerce.dto.*;
 import tech.noetzold.ecommerce.dto.user.SignInDto;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Service;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import static tech.noetzold.ecommerce.config.MessageStrings.USER_CREATED;
 
@@ -38,6 +40,9 @@ public class UserService {
 
     Logger logger = LoggerFactory.getLogger(UserService.class);
 
+    public List<User> findAllUser() throws AuthenticationFailException {
+        return userRepository.findAll();
+    }
 
     public ResponseDto signUp(SignupDto signupDto)  throws CustomException {
         // Check to see if the current email address has already been registered.
