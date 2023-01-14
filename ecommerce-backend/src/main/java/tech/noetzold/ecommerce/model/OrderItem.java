@@ -57,6 +57,13 @@ public class OrderItem {
         this.product = product;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public int getQuantity() {
         return quantity;
