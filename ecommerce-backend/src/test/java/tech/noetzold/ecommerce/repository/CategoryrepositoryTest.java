@@ -11,12 +11,10 @@ import tech.noetzold.ecommerce.util.EcommerceCreator;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @DataJpaTest
 @DisplayName("Tests for Category Repository")
 @Log4j2
-class CategorysRepositoryTest {
+class CategoryRepositoryTest {
     @Autowired
     private Categoryrepository categoryRepository;
 
