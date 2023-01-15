@@ -56,9 +56,9 @@ class CategoryRepositoryTest {
 
         this.categoryRepository.delete(categorySaved);
 
-        Optional<Category> orderOptional = this.categoryRepository.findById(categorySaved.getId());
+        Optional<Category> categoryOptional = this.categoryRepository.findById(categorySaved.getId());
 
-        Assertions.assertThat(orderOptional).isEmpty();
+        Assertions.assertThat(categoryOptional).isEmpty();
     }
 
     @Test
@@ -68,9 +68,9 @@ class CategoryRepositoryTest {
 
         Category categorySaved = this.categoryRepository.save(categoryToBeSaved);
 
-        Optional<Category> orderOptional = this.categoryRepository.findById(categorySaved.getId());
+        Optional<Category> categoryOptional = this.categoryRepository.findById(categorySaved.getId());
 
-        Assertions.assertThat(orderOptional)
+        Assertions.assertThat(categoryOptional)
                 .isNotEmpty()
                 .contains(categorySaved);
 
@@ -79,8 +79,8 @@ class CategoryRepositoryTest {
     @Test
     @DisplayName("Find Category By id and return empty")
     void findByName_ReturnsEmptyList_WhenAnimeIsNotFound(){
-        Optional<Category> order = this.categoryRepository.findById(5);
+        Optional<Category> categoryOptional = this.categoryRepository.findById(5);
 
-        Assertions.assertThat(order).isEmpty();
+        Assertions.assertThat(categoryOptional).isEmpty();
     }
 }
