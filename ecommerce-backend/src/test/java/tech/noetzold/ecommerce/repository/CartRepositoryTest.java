@@ -13,7 +13,7 @@ import java.util.Optional;
 @DataJpaTest
 @DisplayName("Tests for Cart Repository")
 @Log4j2
-class CartsRepositoryTest {
+class CartRepositoryTest {
     @Autowired
     private CartRepository cartsRepository;
 
