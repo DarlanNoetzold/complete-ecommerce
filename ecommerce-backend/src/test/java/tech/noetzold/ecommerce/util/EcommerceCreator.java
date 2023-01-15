@@ -47,8 +47,9 @@ public class EcommerceCreator {
 
     public static List<Cart> createCarts(){
         List<Cart> carts = new ArrayList<>();
-        carts.add(Cart.builder().createdDate(new Date()).user(createUser()).quantity(10).build());
-        carts.add(Cart.builder().createdDate(new Date()).user(createUser()).quantity(10).build());
+        User user = createUser();
+        carts.add(Cart.builder().createdDate(new Date()).user(user).quantity(10).build());
+        carts.add(Cart.builder().createdDate(new Date()).user(user).quantity(10).build());
         return carts;
     }
 
