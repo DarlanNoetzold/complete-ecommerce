@@ -60,4 +60,12 @@ public class EcommerceCreator {
     public static SignInDto createSingIn(String email, String pass){
         return SignInDto.builder().email(email).password(pass).build();
     }
+
+    public static WishList createWishList(){
+        return WishList.builder().createdDate(new Date()).product(createProduct()).user(createUser()).build();
+    }
+
+    public static AuthenticationToken createAuthenticationToken(){
+        return AuthenticationToken.builder().createdDate(new Date()).token("teste").user(createUser()).build();
+    }
 }
