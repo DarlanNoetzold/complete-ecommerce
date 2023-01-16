@@ -62,6 +62,7 @@ public class EcommerceCreator {
     }
 
     public static WishList createWishList(){
+
         return WishList.builder().createdDate(new Date()).product(createProduct()).user(createUser()).build();
     }
 
