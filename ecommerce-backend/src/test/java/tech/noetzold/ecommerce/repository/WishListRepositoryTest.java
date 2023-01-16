@@ -1,15 +1,19 @@
 package tech.noetzold.ecommerce.repository;
 
+import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import tech.noetzold.ecommerce.model.User;
 import tech.noetzold.ecommerce.model.WishList;
 import tech.noetzold.ecommerce.util.EcommerceCreator;
 
 import java.util.Optional;
-
+@DataJpaTest
+@DisplayName("Tests for WishList Repository")
+@Log4j2
 class WishListRepositoryTest {
     @Autowired
     private WishListRepository wishListRepository;
