@@ -1,17 +1,21 @@
 package tech.noetzold.ecommerce.repository;
 
+import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import tech.noetzold.ecommerce.model.User;
 import tech.noetzold.ecommerce.model.AuthenticationToken;
 import tech.noetzold.ecommerce.util.EcommerceCreator;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 
+@DataJpaTest
+@DisplayName("Tests for AuthenticationToken Repository")
+@Log4j2
 class TokenRepositoryTest {
     @Autowired
     private TokenRepository authenticationTokenRepository;
