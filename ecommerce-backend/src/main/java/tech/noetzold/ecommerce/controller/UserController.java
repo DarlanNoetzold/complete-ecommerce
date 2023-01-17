@@ -33,7 +33,7 @@ public class UserController {
     @GetMapping("/all")
     public List<User> findAllUser(@RequestParam("token") String token) throws AuthenticationFailException {
         authenticationService.authenticate(token);
-        return userRepository.findAll();
+        return userService.findAllUser();
     }
 
     @PostMapping("/signup")
