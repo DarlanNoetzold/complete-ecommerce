@@ -26,7 +26,7 @@ public class Product {
     private @NotNull String description;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
     @JoinColumn(name = "category_id", nullable = false)
     Category category;
 
