@@ -1,5 +1,7 @@
 package tech.noetzold.ecommerce.controller;
 
+import com.stripe.exception.StripeException;
+import com.stripe.model.checkout.Session;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.noetzold.ecommerce.common.ApiResponse;
+import tech.noetzold.ecommerce.dto.checkout.StripeResponse;
 import tech.noetzold.ecommerce.model.Order;
 import tech.noetzold.ecommerce.util.EcommerceCreator;
 import tech.noetzold.ecommerce.service.AuthenticationService;
@@ -44,6 +47,16 @@ class OrderControllerTest {
         List<Order> orderPage = new ArrayList<>(List.of(EcommerceCreator.createOrder()));
         BDDMockito.when(orderServiceMock.listOrders(ArgumentMatchers.any()))
                 .thenReturn(orderPage);
+
+        BDDMockito.when(orderServiceMock.getOrder(ArgumentMatchers.any()))
+                .thenReturn(EcommerceCreator.createOrder());
+
+        try {
+            BDDMockito.when(orderServiceMock.createSession(ArgumentMatchers.any()))
+                    .thenReturn(new Session());
+        } catch (StripeException e) {
+            throw new RuntimeException(e);
+        }
 
         BDDMockito.when(userService.findAllUser())
                 .thenReturn(List.of(EcommerceCreator.createUser()));
@@ -77,6 +90,35 @@ class OrderControllerTest {
 
         Assertions.assertThat(order.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
+
+    }
+
+    @Test
+    @DisplayName("Get order by id")
+    void list_GetOrderById_WhenSuccessful(){
+
+        ResponseEntity<Object> order = orderController.getOrderById(1, "");
+
+        Assertions.assertThat(order).isNotNull();
+
+        Assertions.assertThat(order.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+    }
+
+    @Test
+    @DisplayName("Do the checkout list")
+    void list_CheckoutList_WhenSuccessful(){
+
+        ResponseEntity<StripeResponse> order = null;
+        try {
+            order = orderController.checkoutList(new ArrayList<>());
+        } catch (StripeException e) {
+            throw new RuntimeException(e);
+        }
+
+        Assertions.assertThat(order).isNotNull();
+
+        Assertions.assertThat(order.getStatusCode()).isEqualTo(HttpStatus.OK);
 
     }
 }
