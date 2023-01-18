@@ -15,7 +15,6 @@ public class AuthenticationToken {
     @Column(name = "id")
     private Integer id;
 
-
     private String token;
 
     @Column(name = "created_date")
