@@ -6,13 +6,15 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "categories")
 @Builder
-public class Category {
+public class Category implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,16 +25,12 @@ public class Category {
 
 	private @NotBlank String description;
 
-	private @NotBlank String imageUrl;
+	private String imageUrl;
 
 	// add imageURL here
 
-	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
 	Set<Product> products;
-
-	public Category() {
-	}
 
 	public Category(@NotBlank String categoryName, @NotBlank String description) {
 		this.categoryName = categoryName;

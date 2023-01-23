@@ -14,6 +14,7 @@ import tech.noetzold.ecommerce.model.Category;
 import tech.noetzold.ecommerce.service.CategoryService;
 import tech.noetzold.ecommerce.service.ProductService;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 
@@ -25,8 +26,9 @@ public class ProductConsumer {
     @Autowired
     CategoryService categoryService;
 
+    @Transactional
     @RabbitListener(queues = RabbitmqConstantes.FILA_PRODUCT)
-    private void consumidor(String mensagem) throws JsonProcessingException, InterruptedException {
+    private void consumidor(String mensagem) throws JsonProcessingException {
         ProductDto productDto = new ObjectMapper().readValue(mensagem, ProductDto.class);
         Optional<Category> optionalCategory = categoryService.readCategory(productDto.getCategoryId());
         if (!optionalCategory.isPresent()) {

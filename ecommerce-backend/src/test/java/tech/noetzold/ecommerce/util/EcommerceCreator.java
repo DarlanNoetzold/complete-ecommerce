@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class EcommerceCreator {
     public static Order createOrder(){
@@ -38,7 +39,7 @@ public class EcommerceCreator {
     }
 
     public static Product createProduct(){
-         return Product.builder().price(10).carts(createCarts()).name("Product test").description("test").category(createCategory()).imageURL("www.google.com").build();
+         return Product.builder().price(10).carts(createCarts()).name("Product test").category(createCategory()).description("test").imageURL("www.google.com").build();
     }
 
     public static Category createCategory(){

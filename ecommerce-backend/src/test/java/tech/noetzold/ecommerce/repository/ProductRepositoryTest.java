@@ -12,7 +12,7 @@ import tech.noetzold.ecommerce.util.EcommerceCreator;
 import java.util.Optional;
 
 @DataJpaTest
-@DisplayName("Tests for Order Repository")
+@DisplayName("Tests for Product Repository")
 @Log4j2
 class ProductRepositoryTest {
     @Autowired

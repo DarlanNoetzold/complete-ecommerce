@@ -10,6 +10,7 @@ import tech.noetzold.ecommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +40,7 @@ public class ProductService {
         Product product = new Product(productDto, category);
         return product;
     }
-
+    @Transactional
     public void addProduct(ProductDto productDto, Category category) {
         Product product = getProductFromDto(productDto, category);
         productRepository.save(product);
