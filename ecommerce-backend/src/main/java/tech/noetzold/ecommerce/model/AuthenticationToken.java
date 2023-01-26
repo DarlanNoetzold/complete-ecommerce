@@ -21,7 +21,7 @@ public class AuthenticationToken {
     private Date createdDate;
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(nullable = false, name = "user_id")
+    @JoinColumn(nullable = true, name = "user_id")
     private User user;
 
     public AuthenticationToken(User user) {
