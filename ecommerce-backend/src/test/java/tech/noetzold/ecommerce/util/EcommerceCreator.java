@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class EcommerceCreator {
     public static Order createOrder(){
-        return Order.builder().orderItems(createListOrderItem()).user(createUser()).createdDate(new Date()).id(1).sessionId("1").totalPrice(10.5).build();
+        return Order.builder().orderItems(createListOrderItem()).createdDate(new Date()).id(1).sessionId("1").totalPrice(10.5).build();
     }
 
     public static List<OrderItem> createListOrderItem(){
@@ -35,7 +35,7 @@ public class EcommerceCreator {
         }catch (Exception e) {
             e.printStackTrace();
         }
-        return User.builder().orders(new ArrayList<>()).email("test@mail.com").role(Role.user).firstName("Test").lastName("Testing").password(myHash).build();
+        return User.builder().orders(new ArrayList<>()).email("test@mail.com").role(Role.user).firstName("Test").lastName("Testing").password(myHash).id(1).build();
     }
 
     public static Product createProduct(){
@@ -48,9 +48,8 @@ public class EcommerceCreator {
 
     public static List<Cart> createCarts(){
         List<Cart> carts = new ArrayList<>();
-        User user = createUser();
-        carts.add(Cart.builder().createdDate(new Date()).user(user).quantity(10).build());
-        carts.add(Cart.builder().createdDate(new Date()).user(user).quantity(10).build());
+        carts.add(Cart.builder().createdDate(new Date()).quantity(10).build());
+        carts.add(Cart.builder().createdDate(new Date()).quantity(10).build());
         return carts;
     }
 
@@ -64,10 +63,14 @@ public class EcommerceCreator {
 
     public static WishList createWishList(){
 
-        return WishList.builder().createdDate(new Date()).product(createProduct()).user(createUser()).build();
+        return WishList.builder().createdDate(new Date()).product(createProduct()).build();
+    }
+    public static WishList createWishList(User user){
+
+        return WishList.builder().createdDate(new Date()).product(createProduct()).user(user).build();
     }
 
     public static AuthenticationToken createAuthenticationToken(){
-        return AuthenticationToken.builder().createdDate(new Date()).token("teste").user(createUser()).build();
+        return AuthenticationToken.builder().createdDate(new Date()).token("teste").build();
     }
 }
