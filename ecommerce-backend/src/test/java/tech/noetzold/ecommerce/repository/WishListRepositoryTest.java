@@ -10,6 +10,7 @@ import tech.noetzold.ecommerce.model.User;
 import tech.noetzold.ecommerce.model.WishList;
 import tech.noetzold.ecommerce.util.EcommerceCreator;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 @DataJpaTest
 @DisplayName("Tests for WishList Repository")
