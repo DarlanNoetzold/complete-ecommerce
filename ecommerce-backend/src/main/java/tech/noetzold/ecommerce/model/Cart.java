@@ -30,7 +30,7 @@ public class Cart {
 
     @JsonIgnore
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(nullable = false, name = "user_id")
+    @JoinColumn(nullable = true, name = "user_id")
     private User user;
 
 
