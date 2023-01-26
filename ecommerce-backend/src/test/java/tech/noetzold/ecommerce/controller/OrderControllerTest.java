@@ -16,7 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tech.noetzold.ecommerce.common.ApiResponse;
 import tech.noetzold.ecommerce.dto.checkout.StripeResponse;
+import tech.noetzold.ecommerce.dto.user.UserCreateDto;
 import tech.noetzold.ecommerce.model.Order;
+import tech.noetzold.ecommerce.model.User;
 import tech.noetzold.ecommerce.util.EcommerceCreator;
 import tech.noetzold.ecommerce.service.AuthenticationService;
 import tech.noetzold.ecommerce.service.OrderService;
@@ -68,7 +70,8 @@ class OrderControllerTest {
     @Test
     @DisplayName("List of order when successful")
     void list_ReturnsListOfOrders_WhenSuccessful(){
-
+        User user = EcommerceCreator.createUser();
+        userService.createUser("", new UserCreateDto(EcommerceCreator.createUser()));
         List<Order> orders = orderController.getAllOrders("").getBody();
 
         Assertions.assertThat(orders).isNotNull();
@@ -76,7 +79,7 @@ class OrderControllerTest {
         Assertions.assertThat(orders)
                 .isNotEmpty()
                 .hasSize(1);
-
+        orders.get(0).setUser(user);
         Assertions.assertThat(orders.get(0).getUser().getEmail()).isEqualTo(userService.findAllUser().get(0).getEmail());
     }
 
