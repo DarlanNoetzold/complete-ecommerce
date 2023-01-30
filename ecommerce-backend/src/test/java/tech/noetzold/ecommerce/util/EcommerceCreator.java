@@ -1,5 +1,6 @@
 package tech.noetzold.ecommerce.util;
 
+import tech.noetzold.ecommerce.dto.cart.AddToCartDto;
 import tech.noetzold.ecommerce.dto.user.SignInDto;
 import tech.noetzold.ecommerce.dto.user.SignupDto;
 import tech.noetzold.ecommerce.enums.Role;
@@ -39,7 +40,7 @@ public class EcommerceCreator {
     }
 
     public static Product createProduct(){
-         return Product.builder().price(10).carts(createCarts()).name("Product test").category(createCategory()).description("test").imageURL("www.google.com").build();
+         return Product.builder().id(1).price(10).carts(createCarts()).name("Product test").category(createCategory()).description("test").imageURL("www.google.com").build();
     }
 
     public static Category createCategory(){
@@ -55,6 +56,9 @@ public class EcommerceCreator {
 
     public static SignupDto createSingUp(){
         return SignupDto.builder().email("teste@mail.com").firstName("teste").lastName("asdasd").password("123456").build();
+    }
+    public static AddToCartDto createAddToCartDto(){
+        return AddToCartDto.builder().productId(1).quantity(10).build();
     }
 
     public static SignInDto createSingIn(String email, String pass){
