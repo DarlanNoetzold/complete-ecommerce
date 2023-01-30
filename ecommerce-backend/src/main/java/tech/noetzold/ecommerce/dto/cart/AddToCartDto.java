@@ -1,17 +1,19 @@
 package tech.noetzold.ecommerce.dto.cart;
 
-import tech.noetzold.ecommerce.model.Cart;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-public class AddToCartDto {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class AddToCartDto implements Serializable {
     private Integer id;
     private @NotNull Integer productId;
     private @NotNull Integer quantity;
-
-    public AddToCartDto() {
-    }
-
 
 
     @Override
