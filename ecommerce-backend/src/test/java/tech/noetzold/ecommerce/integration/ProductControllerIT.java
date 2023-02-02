@@ -15,7 +15,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
+import tech.noetzold.ecommerce.dto.product.ProductDto;
 import tech.noetzold.ecommerce.enums.Role;
 import tech.noetzold.ecommerce.model.Product;
 import tech.noetzold.ecommerce.model.User;
@@ -79,22 +82,37 @@ class ProductControllerIT {
 
 
     @Test
-    @DisplayName("Integration test to list de products")
+    @DisplayName("Integration test to list products")
     void list_ReturnListOfProducts_WhenSuccessful(){
-        Product savedAnime = productRepository.save(EcommerceCreator.createProduct());
+        Product productSaved = productRepository.save(EcommerceCreator.createProduct());
         userRepository.save(USER);
 
-        String expectedName = savedAnime.getName();
+        String expectedName = productSaved.getName();
 
-        List<Product> animes = testRestTemplateRoleUser.exchange("/animes/all", HttpMethod.GET, null,
+        List<Product> products = testRestTemplateRoleUser.exchange("/product", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<Product>>() {
                 }).getBody();
 
-        Assertions.assertThat(animes)
+        Assertions.assertThat(products)
                 .isNotNull()
                 .isNotEmpty()
                 .hasSize(1);
 
-        Assertions.assertThat(animes.get(0).getName()).isEqualTo(expectedName);
+        Assertions.assertThat(products.get(0).getName()).isEqualTo(expectedName);
+    }
+
+    @Test
+    @DisplayName("Integration test to add new products")
+    void list_addNewProducts_WhenSuccessful(){
+        userRepository.save(USER);
+
+        ProductDto product = new ProductDto(EcommerceCreator.createProduct());
+
+        ResponseEntity<Product> productResponseEntity = testRestTemplateRoleUser.postForEntity("/product/add", product, Product.class);
+
+        Assertions.assertThat(productResponseEntity).isNotNull();
+        Assertions.assertThat(productResponseEntity.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        Assertions.assertThat(productResponseEntity.getBody()).isNotNull();
+        Assertions.assertThat(productResponseEntity.getBody().getId()).isNotNull();
     }
 }
