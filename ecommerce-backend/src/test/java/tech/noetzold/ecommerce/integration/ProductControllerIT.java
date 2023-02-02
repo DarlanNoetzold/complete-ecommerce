@@ -13,11 +13,19 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.test.annotation.DirtiesContext;
 import tech.noetzold.ecommerce.enums.Role;
+import tech.noetzold.ecommerce.model.Product;
 import tech.noetzold.ecommerce.model.User;
 import tech.noetzold.ecommerce.repository.ProductRepository;
 import tech.noetzold.ecommerce.repository.UserRepository;
+import tech.noetzold.ecommerce.util.EcommerceCreator;
+import org.assertj.core.api.Assertions;
+
+
+import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase
@@ -73,6 +81,20 @@ class ProductControllerIT {
     @Test
     @DisplayName("Integration test to list de products")
     void list_ReturnListOfProducts_WhenSuccessful(){
+        Product savedAnime = productRepository.save(EcommerceCreator.createProduct());
+        userRepository.save(USER);
 
+        String expectedName = savedAnime.getName();
+
+        List<Product> animes = testRestTemplateRoleUser.exchange("/animes/all", HttpMethod.GET, null,
+                new ParameterizedTypeReference<List<Product>>() {
+                }).getBody();
+
+        Assertions.assertThat(animes)
+                .isNotNull()
+                .isNotEmpty()
+                .hasSize(1);
+
+        Assertions.assertThat(animes.get(0).getName()).isEqualTo(expectedName);
     }
 }
