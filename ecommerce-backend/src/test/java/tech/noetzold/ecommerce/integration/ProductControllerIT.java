@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 import tech.noetzold.ecommerce.dto.product.ProductDto;
 import tech.noetzold.ecommerce.enums.Role;
+import tech.noetzold.ecommerce.model.Category;
 import tech.noetzold.ecommerce.model.Product;
 import tech.noetzold.ecommerce.model.User;
 import tech.noetzold.ecommerce.repository.ProductRepository;
@@ -106,12 +107,31 @@ class ProductControllerIT {
     void list_addNewProducts_WhenSuccessful(){
         userRepository.save(USER);
 
-        ProductDto product = new ProductDto(EcommerceCreator.createProduct());
+        Product product = EcommerceCreator.createProduct();
+        product.getCategory().setId(1);
+        ProductDto productDto = new ProductDto(product);
 
-        ResponseEntity<Product> productResponseEntity = testRestTemplateRoleUser.postForEntity("/product/add", product, Product.class);
+        ResponseEntity<Category> categoryResponseEntity = testRestTemplateRoleUser.postForEntity("/category/create", product.getCategory(), Category.class);
+
+        ResponseEntity<ProductDto> productResponseEntity = testRestTemplateRoleUser.postForEntity("/product/add", productDto, ProductDto.class);
 
         Assertions.assertThat(productResponseEntity).isNotNull();
         Assertions.assertThat(productResponseEntity.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        Assertions.assertThat(productResponseEntity.getBody()).isNotNull();
+    }
+
+    @Test
+    @DisplayName("Integration test to update products")
+    void list_updateProducts_WhenSuccessful(){
+        userRepository.save(USER);
+
+
+        ProductDto product = new ProductDto(EcommerceCreator.createProduct());
+
+        ResponseEntity<Product> productResponseEntity = testRestTemplateRoleUser.postForEntity("/product/update/1", product, Product.class);
+
+        Assertions.assertThat(productResponseEntity).isNotNull();
+        Assertions.assertThat(productResponseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         Assertions.assertThat(productResponseEntity.getBody()).isNotNull();
         Assertions.assertThat(productResponseEntity.getBody().getId()).isNotNull();
     }
