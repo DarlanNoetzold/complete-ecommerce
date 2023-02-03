@@ -29,7 +29,7 @@ public class Category implements Serializable {
 
 	// add imageURL here
 
-	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
 	Set<Product> products;
 
 	public Category(@NotBlank String categoryName, @NotBlank String description) {
