@@ -26,7 +26,7 @@ public class Product {
     private @NotNull String description;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true, cascade = CascadeType.PERSIST)
     Category category;
 
     @JsonIgnore
