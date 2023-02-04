@@ -141,12 +141,27 @@ class ProductControllerIT {
         Product savedProduct = productRepository.save(EcommerceCreator.createProduct());
         userRepository.save(USER);
 
-        ResponseEntity<Void> productResponseEntity = testRestTemplateRoleUser.exchange("/product",
-                HttpMethod.DELETE, null, Void.class, savedProduct.getId());
+        ResponseEntity<Product> productResponseEntity = testRestTemplateRoleUser.exchange("/product",
+                HttpMethod.DELETE, null, Product.class, savedProduct.getId());
 
         Assertions.assertThat(productResponseEntity).isNotNull();
 
         Assertions.assertThat(productResponseEntity.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
+    }
+
+    @Test
+    @DisplayName("findByName returns an empty list of anime when anime is not found")
+    void findByName_ReturnsEmptyListOfAnime_WhenAnimeIsNotFound() {
+        userRepository.save(USER);
+
+        List<Product> products = testRestTemplateRoleUser.exchange("/product", HttpMethod.GET, null,
+                new ParameterizedTypeReference<List<Product>>() {
+                }).getBody();
+
+        Assertions.assertThat(products)
+                .isNotNull()
+                .isEmpty();
+
     }
 
 }
