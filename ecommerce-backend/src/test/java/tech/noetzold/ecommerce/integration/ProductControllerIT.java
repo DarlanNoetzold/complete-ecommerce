@@ -125,7 +125,6 @@ class ProductControllerIT {
     void list_updateProducts_WhenSuccessful(){
         userRepository.save(USER);
 
-
         ProductDto product = new ProductDto(EcommerceCreator.createProduct());
 
         ResponseEntity<Product> productResponseEntity = testRestTemplateRoleUser.postForEntity("/product/update/1", product, Product.class);
@@ -135,4 +134,19 @@ class ProductControllerIT {
         Assertions.assertThat(productResponseEntity.getBody()).isNotNull();
         Assertions.assertThat(productResponseEntity.getBody().getId()).isNotNull();
     }
+
+    @Test
+    @DisplayName("delete returns 403 when user is not admin")
+    void delete_Returns403_WhenUserIsNotAdmin() {
+        Product savedProduct = productRepository.save(EcommerceCreator.createProduct());
+        userRepository.save(USER);
+
+        ResponseEntity<Void> productResponseEntity = testRestTemplateRoleUser.exchange("/product",
+                HttpMethod.DELETE, null, Void.class, savedProduct.getId());
+
+        Assertions.assertThat(productResponseEntity).isNotNull();
+
+        Assertions.assertThat(productResponseEntity.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
+    }
+
 }
