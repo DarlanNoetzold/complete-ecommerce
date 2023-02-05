@@ -20,7 +20,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 import tech.noetzold.ecommerce.enums.Role;
 import tech.noetzold.ecommerce.model.Category;
-import tech.noetzold.ecommerce.model.Product;
 import tech.noetzold.ecommerce.model.User;
 import tech.noetzold.ecommerce.repository.Categoryrepository;
 import tech.noetzold.ecommerce.repository.UserRepository;
