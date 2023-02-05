@@ -18,10 +18,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
-import tech.noetzold.ecommerce.dto.category.Category;
 import tech.noetzold.ecommerce.enums.Role;
 import tech.noetzold.ecommerce.model.Category;
-import tech.noetzold.ecommerce.model.Category;
+import tech.noetzold.ecommerce.model.Product;
 import tech.noetzold.ecommerce.model.User;
 import tech.noetzold.ecommerce.repository.Categoryrepository;
 import tech.noetzold.ecommerce.repository.UserRepository;
@@ -85,7 +84,7 @@ public class CategoryControllerIT {
         Category categorySaved = categoryRepository.save(EcommerceCreator.createCategory());
         userRepository.save(USER);
 
-        String expectedName = categorySaved.getName();
+        String expectedName = categorySaved.getCategoryName();
 
         List<Category> categorys = testRestTemplateRoleUser.exchange("/category", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<Category>>() {
@@ -96,21 +95,16 @@ public class CategoryControllerIT {
                 .isNotEmpty()
                 .hasSize(1);
 
-        Assertions.assertThat(categorys.get(0).getName()).isEqualTo(expectedName);
+        Assertions.assertThat(categorys.get(0).getCategoryName()).isEqualTo(expectedName);
     }
 
     @Test
-    @DisplayName("Integration test to add new categorys")
+    @DisplayName("Integration test to add new categories")
     void list_addNewCategorys_WhenSuccessful(){
         userRepository.save(USER);
-
         Category category = EcommerceCreator.createCategory();
-        category.getCategory().setId(1);
-        Category categoryDto = new Category(category);
 
-        ResponseEntity<Category> categoryResponseEntity = testRestTemplateRoleUser.postForEntity("/category/create", category.getCategory(), Category.class);
-
-        ResponseEntity<Category> categoryResponseEntity = testRestTemplateRoleUser.postForEntity("/category/add", categoryDto, Category.class);
+        ResponseEntity<Category> categoryResponseEntity = testRestTemplateRoleUser.postForEntity("/category/add", category, Category.class);
 
         Assertions.assertThat(categoryResponseEntity).isNotNull();
         Assertions.assertThat(categoryResponseEntity.getStatusCode()).isEqualTo(HttpStatus.CREATED);
@@ -118,7 +112,7 @@ public class CategoryControllerIT {
     }
 
     @Test
-    @DisplayName("Integration test to update categorys")
+    @DisplayName("Integration test to update categories")
     void list_updateCategorys_WhenSuccessful(){
         userRepository.save(USER);
 
