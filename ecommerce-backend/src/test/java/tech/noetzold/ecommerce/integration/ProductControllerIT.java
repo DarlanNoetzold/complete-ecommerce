@@ -150,7 +150,7 @@ class ProductControllerIT {
     }
 
     @Test
-    @DisplayName("findByName returns an empty list of anime when anime is not found")
+    @DisplayName("findByName returns an empty list of product when product is not found")
     void findByName_ReturnsEmptyListOfAnime_WhenAnimeIsNotFound() {
         userRepository.save(USER);
 
