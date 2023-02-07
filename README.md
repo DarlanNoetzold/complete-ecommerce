@@ -27,7 +27,7 @@ A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Fr
 ## Setup:
 * Para iniciar o Back-End basta seguir o tutorial:
 Link: https://github.com/DarlanNoetzold/complete-ecommerce/blob/main/ecommerce-backend/README.md
-* Para iniciar o Back-End basta seguir o tutorial:
+* Para iniciar o Front-End basta seguir o tutorial:
 Link: https://github.com/DarlanNoetzold/complete-ecommerce/blob/main/ecommerce-vuejs/README.md
 
 ---
