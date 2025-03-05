@@ -1,53 +1,51 @@
 # complete-ecommerce
 A Complete E-commerce, built with a SpringBoot on Back-End and with Vue.js on Front-End.
 
-## Desenvolvimento:
-* Foi usado Java com SpringBoot para o BackEnd e Vue.js para o FronEnd;
-* A aplicação tem login e segurança bem estruturada;
-* Para salvar os dados foi usado uma API como BackEnd (Minha aplicação com o SpringBoot), que salva em um banco PostgreSQL;
-* Para pagamento foi usado Stripe Token;
-* Com SpringSecurity foram feitas autenticações e autoriações;
-* Todos os endpoint foram mapeados e documentados pelo Swagger;
-* Os endpoint criados no BackEnd são consumidos e alimentados pelo FrontEnd através do Vue.js;
-* Uso de RabbitMq no back-end para gerenciamento de filas para atualização de produtos;
-* Uso do banco não relacional Redis para a implementação do cache;
-* Teste com JUnit e Mockito.
+## Development:
+* Java with SpringBoot was used for the BackEnd and Vue.js for the FrontEnd;
+* The application has a well-structured login and security;
+* To save the data, an API was used as BackEnd (My application with SpringBoot), which saves it in a PostgreSQL database;
+* Stripe Token was used for payment;
+* Authentication and authorization were done with SpringSecurity;
+* All endpoints were mapped and documented by Swagger;
+* The endpoints created in the BackEnd are consumed and fed by the FrontEnd through Vue.js;
+* Use of RabbitMq in the back-end to manage queues for product updates;
+* Use of the non-relational Redis database to implement the cache;
+* Testing with JUnit and Mockito.
 
-
-## Projeto:
-* Exitem usuários de clientes e de administradores;
-* É possível simular pagamento com ID card fake;
-* É possível adicionar novos produtos e categorias;
-* Foi desenvolvida uma lista de desejos;
-* É possível adicionar produtos ao carrinho;
-* Os produtos são adicionados no back-end de maneira assíncrona usando serviço de mensageiria;
-* A aplicação utiliza cache para melhorar a performance.
-
+## Project:
+* There are client and administrator users;
+* It is possible to simulate payment with a fake ID card;
+* It is possible to add new products and categories;
+* A wish list has been developed;
+* It is possible to add products to the cart;
+* Products are added to the back-end asynchronously using a messaging service;
+* The application uses cache to improve performance.
 
 ## Setup:
-* Para iniciar o Back-End basta seguir o tutorial:
+* To start the Back-End, just follow the tutorial:
 Link: https://github.com/DarlanNoetzold/complete-ecommerce/blob/main/ecommerce-backend/README.md
-* Para iniciar o Front-End basta seguir o tutorial:
+* To start the Front-End, just follow the tutorial:
 Link: https://github.com/DarlanNoetzold/complete-ecommerce/blob/main/ecommerce-vuejs/README.md
 
 ---
-## Imagens do E-commerce:
-* Pedidos:
+## E-commerce Images:
+* Orders:
 <br>![image](https://user-images.githubusercontent.com/41628589/205276353-37db0983-9c9e-47c1-b78c-1943961f0159.png)
 
-* Pagamento:
+* Payment:
 <br>![image](https://user-images.githubusercontent.com/41628589/205277771-7889d236-4ea6-46b4-85b4-8b2717cd1c57.png)
 
-* Carrinho:
+* Cart:
 <br>![image](https://user-images.githubusercontent.com/41628589/205278053-c2915618-a025-4811-bb41-2892773b27b7.png)
 
-* Lista de Desejos:
+* List of Wish List:
 <br>![image](https://user-images.githubusercontent.com/41628589/205278166-7a46ce8b-4831-487d-97aa-010aa4915e92.png)
 
-* Criar Conta e Login:
+* Create Account and Login:
 <br>![image](https://user-images.githubusercontent.com/41628589/205278295-7a5f1fd4-cca9-465a-a2d7-aaf64b9e38f5.png)
 
-* Adicionar novos produtos e novas categorias:
+* Add new products and new features categories:
 <br>![image](https://user-images.githubusercontent.com/41628589/205279578-68e904ed-a8d1-48dd-9b8b-9b0a52cb6466.png)
 
 ---
